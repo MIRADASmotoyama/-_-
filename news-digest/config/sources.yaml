@@ -1,0 +1,9 @@
+# ニュース取得元のRSSフィード一覧。
+# 日経電子版(nikkei.com)は利用規約でスクレイピング・自動収集を禁止しており、
+# かつ公式RSSも提供していないため対象外としています。
+# ここには「公式に無料RSSを提供している」ニュース源のみを追加してください。
+feeds:
+  - name: "NHK NEWS WEB - 経済"
+    url: "https://www3.nhk.or.jp/rss/news/cat5.xml"
+  - name: "Yahoo!ニュース - 経済"
+    url: "https://news.yahoo.co.jp/rss/categories/business.xml"
