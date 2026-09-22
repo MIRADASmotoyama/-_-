@@ -1,0 +1,21 @@
+# ニュース取得元のRSSフィード一覧。
+# 日経電子版(nikkei.com)は利用規約でスクレイピング・自動収集を禁止しており、
+# かつ公式RSSも提供していないため対象外としています。
+# ここには「公式に無料RSSを提供している」ニュース源のみを追加してください。
+#
+# 注意: 以下のうち「日経ビジネス電子版」「ITmedia ビジネスオンライン」「ITmedia AI+」の
+# URLは、このセッションのネットワーク制限によりURLの動作確認ができませんでした
+# (business.nikkei.com / itmedia.co.jp への接続がサンドボックス側でブロックされていたため)。
+# GitHub Actions実行後、ログに「新着の該当記事なし」が続く場合はURLが変わっている
+# 可能性があるので、該当メディアの公式サイトでRSS配信ページを確認してください。
+feeds:
+  - name: "東洋経済オンライン"
+    url: "https://toyokeizai.net/list/feed/rss"
+  - name: "日経ビジネス電子版"
+    url: "https://business.nikkei.com/rss/sns/nb.rdf"
+  - name: "ITmedia ビジネスオンライン"
+    url: "https://rss.itmedia.co.jp/rss/2.0/business.xml"
+  - name: "ITmedia AI+"
+    url: "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml"
+  - name: "Yahoo!ニュース - 経済"
+    url: "https://news.yahoo.co.jp/rss/categories/business.xml"

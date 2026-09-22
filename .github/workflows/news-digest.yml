@@ -1,0 +1,40 @@
+name: News Digest Mailer
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # 09:00 JST
+    - cron: "0 7 * * *"  # 16:00 JST
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r news-digest/requirements.txt
+
+      - name: Run digest
+        working-directory: news-digest/scripts
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python send_digest.py
+
+      - name: Commit updated sent-log
+        run: |
+          git config user.name "news-digest-bot"
+          git config user.email "actions@github.com"
+          git add news-digest/state/sent_log.json
+          git diff --cached --quiet || git commit -m "chore: update sent article log"
+          git push

@@ -1,0 +1,6 @@
+# 記事の記録先スプレッドシート
+# (A列: 見出し / B列: リンク / C列: 自分のコメント欄)
+spreadsheet_id: "1nek8cFJzcnYnwdg0J1egZLJmGJXh2Jh6OhSrQ214QbI"
+
+# 大学生向け要約に使うClaudeモデル
+summary_model: "claude-haiku-4-5-20251001"
